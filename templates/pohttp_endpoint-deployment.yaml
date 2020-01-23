@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pohttp
+  labels:
+    {{- include "..labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "..selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "..selectorLabels" . | nindent 8 }}
+        pong.relaycorp.tech/component: pohttp
+    spec:
+      serviceAccountName: {{ include "..serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: pohttp
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "relaycorp/relaynet-pong:v{{ .Chart.AppVersion }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 15
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 15
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}

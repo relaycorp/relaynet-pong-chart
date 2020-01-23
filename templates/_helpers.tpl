@@ -55,9 +55,5 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 Create the name of the service account to use
 */}}
 {{- define "..serviceAccountName" -}}
-{{- if .Values.serviceAccount.create -}}
-    {{ default (include "..fullname" .) .Values.serviceAccount.name }}
-{{- else -}}
-    {{ default "default" .Values.serviceAccount.name }}
-{{- end -}}
+{{ default (include "..fullname" .) .Values.serviceAccount.name }}
 {{- end -}}
