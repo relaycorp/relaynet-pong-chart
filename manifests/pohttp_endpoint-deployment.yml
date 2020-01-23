@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pohttp
+  namespace: pong-test
+  labels:
+    app: relaynet-pong
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: relaynet-pong
+  template:
+    metadata:
+      labels:
+        app: relaynet-pong
+        component: pohttp_endpoint
+    spec:
+      containers:
+        - name: endpoint
+          image: relaycorp/relaynet-pong:v1.1.2
+          command: ['node', 'build/main/bin/pohttp-server.js']
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REDIS_HOST
+              value: redis
+            - name: POHTTP_TLS_REQUIRED
+              value: 'false'

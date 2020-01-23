@@ -1,0 +1,14 @@
+version: 2.1
+jobs:
+  'check':
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run: helm lint
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - check
