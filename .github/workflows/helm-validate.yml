@@ -1,4 +1,4 @@
-name: "Validate PR title"
+name: "Validate Helm chart"
 on:
   pull_request:
     types:
