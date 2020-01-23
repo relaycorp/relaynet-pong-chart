@@ -24,5 +24,6 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "relaycorp/relaynet-pong:v{{ .Chart.AppVersion }}"
           imagePullPolicy: IfNotPresent
+          command: ['node', 'build/main/bin/background-queue.js']
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

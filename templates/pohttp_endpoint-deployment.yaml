@@ -24,6 +24,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "relaycorp/relaynet-pong:v{{ .Chart.AppVersion }}"
           imagePullPolicy: IfNotPresent
+          command: ['node', 'build/main/bin/pohttp-server.js']
           ports:
             - name: http
               containerPort: 8080
