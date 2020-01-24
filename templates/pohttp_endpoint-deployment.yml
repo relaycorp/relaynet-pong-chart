@@ -25,6 +25,9 @@ spec:
           image: "relaycorp/relaynet-pong:v{{ .Chart.AppVersion }}"
           imagePullPolicy: IfNotPresent
           command: ['node', 'build/main/bin/pohttp-server.js']
+          envFrom:
+            - configMapRef:
+                name: {{ include "..fullname" . }}
           ports:
             - name: http
               containerPort: 8080

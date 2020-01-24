@@ -25,5 +25,8 @@ spec:
           image: "relaycorp/relaynet-pong:v{{ .Chart.AppVersion }}"
           imagePullPolicy: IfNotPresent
           command: ['node', 'build/main/bin/background-queue.js']
+          envFrom:
+            - configMapRef:
+                name: {{ include "..fullname" . }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

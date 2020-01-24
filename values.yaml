@@ -51,3 +51,9 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+redis:
+  host:
+  port: 6379
+
+pohttp_tls_required: true
