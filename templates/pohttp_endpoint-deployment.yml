@@ -27,6 +27,9 @@ spec:
           image: "relaycorp/relaynet-pong:v{{ .Chart.AppVersion }}"
           imagePullPolicy: IfNotPresent
           command: ['node', 'build/main/bin/pohttp-server.js']
+          env:
+            - name: PONG_REQUEST_ID_HEADER
+              value: {{ .Values.http_request_id_header }}
           envFrom:
             - configMapRef:
                 name: {{ include "..fullname" . }}

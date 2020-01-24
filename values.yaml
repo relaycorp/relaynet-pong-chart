@@ -61,4 +61,5 @@ vault:
   session_keys_mount_path: session-keys
   token:
 
+http_request_id_header: X-Request-Id
 pohttp_tls_required: true
