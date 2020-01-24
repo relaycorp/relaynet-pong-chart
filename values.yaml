@@ -56,4 +56,7 @@ redis:
   host:
   port: 6379
 
+vault:
+  token:
+
 pohttp_tls_required: true

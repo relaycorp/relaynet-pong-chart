@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pohttp
+  name: background_queue
   labels:
     {{- include "..labels" . | nindent 4 }}
 spec:
@@ -13,6 +13,7 @@ spec:
     metadata:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/config.yml") . | sha256sum }}
+        checksum/secret: {{ include (print $.Template.BasePath "/background_queue-secret.yml") . | sha256sum }}
       labels:
         {{- include "..selectorLabels" . | nindent 8 }}
         pong.relaycorp.tech/component: queue
@@ -30,5 +31,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "..fullname" . }}
+            - secretRef:
+                name: {{ include "..fullname" . }}-background_queue
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
