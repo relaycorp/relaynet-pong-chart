@@ -11,6 +11,8 @@ spec:
       {{- include "..selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/config.yml") . | sha256sum }}
       labels:
         {{- include "..selectorLabels" . | nindent 8 }}
         pong.relaycorp.tech/component: pohttp
