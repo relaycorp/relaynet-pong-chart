@@ -4,5 +4,5 @@ metadata:
   name: {{ include "..fullname" . }}
 data:
   REDIS_HOST: {{ required "The Redis host is required" .Values.redis.host }}
-  REDIS_PORT: {{ .Values.redis.port }}
-  POHTTP_TLS_REQUIRED: {{ .Values.pohttp_tls_required }}
+  REDIS_PORT: '{{ .Values.redis.port }}'
+  POHTTP_TLS_REQUIRED: '{{ .Values.pohttp_tls_required }}'
