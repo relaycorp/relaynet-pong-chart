@@ -53,10 +53,12 @@ resources: {}
   #   memory: 128Mi
 
 redis:
-  host:
+  host: redis
   port: 6379
 
 vault:
+  address: vault
+  session_keys_mount_path: session-keys
   token:
 
 pohttp_tls_required: true

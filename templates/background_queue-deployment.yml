@@ -28,6 +28,11 @@ spec:
           image: "relaycorp/relaynet-pong:v{{ .Chart.AppVersion }}"
           imagePullPolicy: IfNotPresent
           command: ['node', 'build/main/bin/background-queue.js']
+          env:
+            - name: VAULT_URL
+              value: {{ .Values.vault.address }}
+            - name: VAULT_KV_PREFIX
+              value: {{ .Values.vault.session_keys_mount_path }}
           envFrom:
             - configMapRef:
                 name: {{ include "..fullname" . }}
