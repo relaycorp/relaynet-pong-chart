@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: background_queue
+  name: {{ include "..fullname" . }}-background_queue
   labels:
     {{- include "..labels" . | nindent 4 }}
 spec:
@@ -9,6 +9,7 @@ spec:
   selector:
     matchLabels:
       {{- include "..selectorLabels" . | nindent 6 }}
+      pong.relaycorp.tech/component: queue
   template:
     metadata:
       annotations:
