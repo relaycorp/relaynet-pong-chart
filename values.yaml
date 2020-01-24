@@ -7,11 +7,6 @@ replicaCount: 1
 nameOverride: ""
 fullnameOverride: ""
 
-serviceAccount:
-  # The name of the service account to use.
-  # If not set, a name is generated using the fullname template
-  name:
-
 podSecurityContext: {}
   # fsGroup: 2000
 
