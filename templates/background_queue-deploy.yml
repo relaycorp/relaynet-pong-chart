@@ -32,7 +32,7 @@ spec:
           command: ['node', 'build/main/bin/background-queue.js']
           env:
             - name: VAULT_URL
-              value: {{ .Values.vault.address }}
+              value: "http://{{ .Values.vault.host }}:{{ .Values.vault.port }}"
             - name: VAULT_KV_PREFIX
               value: {{ .Values.vault.session_keys_mount_path }}
           envFrom:
