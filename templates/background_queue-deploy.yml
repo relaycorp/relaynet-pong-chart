@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/config.yml") . | sha256sum }}
+        checksum/config: {{ include (print $.Template.BasePath "/global-cm.yml") . | sha256sum }}
         checksum/secret: {{ include (print $.Template.BasePath "/background_queue-secret.yml") . | sha256sum }}
       labels:
         {{- include "..selectorLabels" . | nindent 8 }}
