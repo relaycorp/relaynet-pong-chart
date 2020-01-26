@@ -4,6 +4,7 @@ metadata:
   name: {{ include "..fullname" . }}-pohttp
   labels:
     {{- include "..labels" . | nindent 4 }}
+    pong.relaycorp.tech/component: pohttp
 spec:
   type: {{ .Values.service.type }}
   ports:
