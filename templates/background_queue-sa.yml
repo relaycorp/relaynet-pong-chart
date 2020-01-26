@@ -3,5 +3,5 @@ kind: ServiceAccount
 metadata:
   name: {{ include "..fullname" . }}-queue
   labels:
-    pong.relaycorp.tech/component: background_queue
+    pong.relaycorp.tech/component: queue
 {{- include "..labels" . | nindent 4 -}}

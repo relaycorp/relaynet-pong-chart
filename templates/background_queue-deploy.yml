@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       {{- include "..selectorLabels" . | nindent 6 }}
-      pong.relaycorp.tech/component: background_queue
+      pong.relaycorp.tech/component: queue
   template:
     metadata:
       annotations:
@@ -18,7 +18,7 @@ spec:
         checksum/secret: {{ include (print $.Template.BasePath "/background_queue-secret.yml") . | sha256sum }}
       labels:
         {{- include "..selectorLabels" . | nindent 8 }}
-        pong.relaycorp.tech/component: background_queue
+        pong.relaycorp.tech/component: queue
     spec:
       serviceAccountName: {{ include "..fullname" . }}-queue
       securityContext:
