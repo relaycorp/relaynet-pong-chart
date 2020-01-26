@@ -13,7 +13,8 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/global-cm.yml") . | sha256sum }}
+        checksum/global-config: {{ include (print $.Template.BasePath "/global-cm.yml") . | sha256sum }}
+        checksum/queue-config: {{ include (print $.Template.BasePath "/background_queue-cm.yml") . | sha256sum }}
         checksum/secret: {{ include (print $.Template.BasePath "/background_queue-secret.yml") . | sha256sum }}
       labels:
         {{- include "..selectorLabels" . | nindent 8 }}
@@ -37,6 +38,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "..fullname" . }}
+            - configMapRef:
+                name: {{ include "..fullname" . }}-queue
             - secretRef:
                 name: {{ include "..fullname" . }}-queue
           resources:

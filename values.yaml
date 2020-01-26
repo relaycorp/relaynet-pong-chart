@@ -59,4 +59,4 @@ vault:
 http_request_id_header: X-Request-Id
 pohttp_tls_required: true
 
-endpoint_private_key:
+current_endpoint_key_id:
