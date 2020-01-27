@@ -19,5 +19,5 @@ metadata:
 spec:
   backend:
     serviceName: {{ include "..fullname" . }}-pohttp
-    servicePort: {{ .Values.service.port }}
+    servicePort: http
 {{- end }}
