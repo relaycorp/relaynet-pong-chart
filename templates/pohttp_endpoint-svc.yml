@@ -6,7 +6,7 @@ metadata:
     {{- include "..labels" . | nindent 4 }}
     pong.relaycorp.tech/component: pohttp
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.ingress.enabled | ternary "LoadBalancer" .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: http
