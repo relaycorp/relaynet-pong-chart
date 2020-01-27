@@ -1,7 +1,9 @@
 module.exports = {
     branch: 'master',
-    extends: '@relaycorp/shared-config',
     plugins: [
-        ['@semantic-release/npm', { npmPublish: false }],
+        '@semantic-release/commit-analyzer',
+        '@semantic-release/release-notes-generator',
+        '@semantic-release/github',
+        ['@semantic-release/git', { message: 'chore(release): ${nextRelease.version}\n\n${nextRelease.notes}' }],
     ]
 };
