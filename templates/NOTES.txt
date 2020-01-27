@@ -9,7 +9,7 @@ You can also run the commands above if you'd like to re-generate the keys manual
 Get the PoHTTP endpoint URL by running these commands:
 
 {{- if .Values.ingress.enabled }}
-  (You're using an ingress, so please check you cloud provider account)
+  kubectl get ingress --namespace {{ .Release.Namespace }} {{ include "..fullname" . }}-pohttp
 {{- else if contains "NodePort" .Values.service.type }}
   export NODE_PORT=$(kubectl get --namespace {{ .Release.Namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ include "..fullname" . }})
   export NODE_IP=$(kubectl get nodes --namespace {{ .Release.Namespace }} -o jsonpath="{.items[0].status.addresses[0].address}")
