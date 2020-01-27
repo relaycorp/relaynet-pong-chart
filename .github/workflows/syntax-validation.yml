@@ -22,6 +22,6 @@ jobs:
     - name: Validate Terraform example
       run: |
         cd example
-        terraform fmt
+        terraform fmt -check
         terraform init -backend=false
         terraform validate
