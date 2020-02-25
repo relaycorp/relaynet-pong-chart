@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: {{ include "..fullname" . }}-queue
 data:
-  ENDPOINT_KEY_ID: "{{ default .Values.current_endpoint_key_id (randNumeric 8) }}"
+  ENDPOINT_KEY_ID: "{{ default .Values.current_endpoint_key_id (randAscii 12 | b64enc) }}"
