@@ -15,10 +15,7 @@ jobs:
     - name: Validate Helm chart
       run: helm template --values=ci/required-values.yml .
 
-    - name: Set up Terraform
-      uses: volcano-coffee-company/setup-terraform@v1
-      with:
-        version: '~0.12'
+    - uses: hashicorp/setup-terraform@v1
     - name: Validate Terraform example
       run: |
         cd example
