@@ -39,4 +39,4 @@ spec:
             - configMapRef:
                 name: {{ include "..fullname" . }}
             - secretRef:
-                name: {{ include "..fullname" . }}-queue
+                name: {{ include "..fullname" . }}-vault
