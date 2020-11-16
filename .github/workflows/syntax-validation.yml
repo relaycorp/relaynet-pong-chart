@@ -9,11 +9,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
+    - uses: azure/setup-helm@v1
+      with:
+        version: v3.2.4
     - name: Validate Helm chart
-      uses: igabaydulin/helm-check-action@0.1.4
-      env:
-        CHART_LOCATION: .
-        CHART_VALUES: ./ci/required-values.yml
+      run: helm template --values=ci/required-values.yml .
 
     - name: Set up Terraform
       uses: volcano-coffee-company/setup-terraform@v1
