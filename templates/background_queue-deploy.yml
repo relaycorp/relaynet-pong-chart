@@ -21,6 +21,7 @@ spec:
         pong.relaycorp.tech/component: queue
     spec:
       serviceAccountName: {{ include "..fullname" . }}-queue
+      shareProcessNamespace: true
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:

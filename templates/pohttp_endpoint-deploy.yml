@@ -19,6 +19,7 @@ spec:
         pong.relaycorp.tech/component: pohttp
     spec:
       serviceAccountName: {{ include "..fullname" . }}-pohttp
+      shareProcessNamespace: true
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
