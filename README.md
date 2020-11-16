@@ -12,7 +12,7 @@ helm repo add relaycorp https://h.cfcr.io/relaycorp/public
 helm install \
   --set vault.token=the-secret-token \
   pong-test \
-  https://github.com/relaycorp/relaynet-pong-chart/archive/master.tar.gz
+  relaycorp/relaynet-pong
 ```
 
 Check out [`example/`](./example) for a working example on Google Cloud Platform.
