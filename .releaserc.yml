@@ -6,6 +6,7 @@ plugins:
     - npmPublish: false
   - - "@semantic-release/exec"
     - prepareCmd: helm package . --app-version=${nextRelease.version} --version=${nextRelease.version} --destination=build/
+      publishCmd: .github/scripts/push-helm-chart.sh
   - - "@semantic-release/github"
     - assets:
         - path: build/relaynet-pong-*.tgz
