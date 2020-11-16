@@ -73,13 +73,15 @@ Finally, deploy the Relaynet Pong chart:
 
 1. Install the Relaynet Pong chart with an HTTP load balancer (done by `ingress.enabled=true`):
    ```
-   helm install \
+   helm repo add relaycorp https://h.cfcr.io/relaycorp/public
+
+    helm install \
      --set ingress.enabled=true \
      --set "redis.host=$(terraform output redis_host)" \
      --set vault.host=vault.default.svc.cluster.local \
      --set vault.token=$VAULT_TOKEN \
      relaynet-pong \
-     https://github.com/relaycorp/relaynet-pong-chart/archive/master.tar.gz
+     relaycorp/relaynet-pong
    ```
 1. Follow the post-install instructions to generate the initial key pairs.
 
