@@ -10,7 +10,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+      - uses: azure/setup-helm@v1
+        with:
+          version: v3.2.4
+      - name: Install Helm Push plugin
+        run: helm plugin install https://github.com/chartmuseum/helm-push --version 0.9.0
       - name: Release
         uses: codfish/semantic-release-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish Helm chart
+        run: |
+          HELM_PACKAGE="$(find build/ -name 'relaynet-pong-*.tgz' | head -n1)"
+          helm push "${HELM_PACKAGE}" https://h.cfcr.io/relaycorp/public
+        env:
+          CF_API_KEY: ${{ secrets.HELM_REPO_ACCESS_TOKEN }}
+          HELM_REPO_ACCESS_TOKEN: ${{ secrets.HELM_REPO_ACCESS_TOKEN }}

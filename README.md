@@ -2,13 +2,13 @@
 
 This Helm chart allows you to deploy [Relaynet Pong](https://docs.relaycorp.tech/relaynet-pong/) to any Kubernetes-compatible cloud provider.
 
-There's no Helm repository at this point but you can download the chart directly from a [GitHub release](https://github.com/relaycorp/relaynet-pong-chart/releases). Or if you want to use the latest from the `master` branch, use `https://github.com/relaycorp/relaynet-pong-chart/archive/master.tar.gz`.
-
 ## Example
 
 At a minimum, you have to specify the Vault authentication token; e.g.:
 
 ```
+helm repo add relaycorp https://h.cfcr.io/relaycorp/public
+
 helm install \
   --set vault.token=the-secret-token \
   pong-test \
