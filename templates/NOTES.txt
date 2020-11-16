@@ -1,11 +1,3 @@
-If this is a fresh install, you should now generate the long-term endpoint key pair and the initial session key by running the following commands, which will have the private keys stored in Vault and the certificates output:
-
-  QUEUE_POD_NAME="$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name=relaynet-pong,app.kubernetes.io/instance={{ .Release.Name }},pong.relaycorp.tech/component=queue" -o jsonpath="{.items[0].metadata.name}" | head -1)"
-
-  kubectl exec "${QUEUE_POD_NAME}" -- node build/main/bin/generate-keypairs.js
-
-You can also run the commands above if you'd like to re-generate the keys manually.
-
 Get the PoHTTP endpoint URL by running these commands:
 
 {{- if .Values.ingress.enabled }}

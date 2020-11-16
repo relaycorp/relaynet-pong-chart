@@ -14,8 +14,8 @@ spec:
     metadata:
       annotations:
         checksum/global-config: {{ include (print $.Template.BasePath "/global-cm.yml") . | sha256sum }}
-        checksum/queue-config: {{ include (print $.Template.BasePath "/background_queue-cm.yml") . | sha256sum }}
-        checksum/secret: {{ include (print $.Template.BasePath "/background_queue-secret.yml") . | sha256sum }}
+        checksum/queue-config: {{ include (print $.Template.BasePath "/generated-cm.yml") . | sha256sum }}
+        checksum/secret: {{ include (print $.Template.BasePath "/vault-secret.yml") . | sha256sum }}
       labels:
         {{- include "..selectorLabels" . | nindent 8 }}
         pong.relaycorp.tech/component: queue
@@ -40,8 +40,8 @@ spec:
             - configMapRef:
                 name: {{ include "..fullname" . }}
             - configMapRef:
-                name: {{ include "..fullname" . }}-queue
+                name: {{ include "..fullname" . }}-generated
             - secretRef:
-                name: {{ include "..fullname" . }}-queue
+                name: {{ include "..fullname" . }}-vault
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
