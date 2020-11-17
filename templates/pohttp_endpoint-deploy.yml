@@ -45,11 +45,13 @@ spec:
               port: 8080
             initialDelaySeconds: 15
             periodSeconds: 15
+            timeoutSeconds: 2
           readinessProbe:
             httpGet:
               path: /
               port: 8080
             initialDelaySeconds: 3
             periodSeconds: 15
+            timeoutSeconds: 2
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
