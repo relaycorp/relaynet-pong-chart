@@ -40,6 +40,9 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
+backgroundQueue:
+  replicaCount: 1
+
 redis:
   host: redis
   port: 6379
