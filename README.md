@@ -1,5 +1,7 @@
 # Helm Chart for Relaynet Pong
 
+**DEPRECATED:** The Helm chart is now maintained in [the same repository as the app](https://github.com/relaycorp/relaynet-pong/tree/master/chart).
+
 This Helm chart allows you to deploy [Relaynet Pong](https://docs.relaycorp.tech/relaynet-pong/) to any Kubernetes-compatible cloud provider.
 
 ## Example
