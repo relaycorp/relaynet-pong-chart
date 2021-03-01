@@ -16,6 +16,8 @@ jobs:
       run: helm template --values=ci/required-values.yml .
 
     - uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 0.12.25
     - name: Validate Terraform example
       run: |
         cd example
